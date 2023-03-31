@@ -1,4 +1,4 @@
-import { Button, Container, Form, Nav } from "react-bootstrap";
+import { Button, Container, Form, Nav, InputGroup } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
@@ -8,8 +8,9 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../../components/Footer/Footer";
 import githubWhiteIcon from "../../assets/icons/githubWhiteIcon.svg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { firebaseError } from "../../firebase/firebaseError";
 
 
 
@@ -19,6 +20,19 @@ export function Cadastro() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const [inputType, setInputType] = useState("password");
+  const [iconType, setIconType] = useState("bi bi-eye-slash");
+  function showPassword() {
+    if (inputType === "password") {
+      setInputType("text");
+      setIconType("bi bi-eye");
+    } else {
+      setInputType("password");
+      setIconType("bi bi-eye-slash");
+
+    }
+  }
 
   const navigate = useNavigate();
 
@@ -33,7 +47,7 @@ export function Cadastro() {
         navigate("/");
       })
       .catch((erro) => {
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        toast.error(`Um erro aconteceu.  ${firebaseError(erro.code)}`, {
           position: "bottom-right",
           duration: 2500,
         });
@@ -52,7 +66,7 @@ export function Cadastro() {
       })
       .catch((erro) => {
         // tratamento de erro
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        toast.error(`Um erro aconteceu.  ${firebaseError(erro.code)}`, {
           position: "bottom-right",
           duration: 2500,
         });
@@ -70,7 +84,7 @@ export function Cadastro() {
       navigate("/");
     })
     .catch((erro) => {
-      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+      toast.error(`Um erro aconteceu.  ${firebaseError(erro.code)}`, {
         position: "bottom-right",
         duration: 2500,
       });
@@ -119,18 +133,21 @@ export function Cadastro() {
             {errors.email?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group className="mb-5" controlId="password">
           <Form.Label>Senha</Form.Label>
+          <InputGroup className="mb-5" controlId="senha">
           <Form.Control
-            type="password"
-            className={errors.senha && "is-invalid"}
+            onCh
+            id="senha"
+            type={inputType}
             placeholder="Sua senha"
-            {...register("senha", { required: "A senha é obrigatória" })}
+            className={errors.senha ? "is-invalid" : ""}
+            {...register("senha", { required: "Senha é obrigatória" })}
           />
+          <InputGroup.Text  onClick={showPassword}><i  className={iconType}></i></InputGroup.Text>
           <Form.Text className="invalid-feedback">
             {errors.senha?.message}
           </Form.Text>
-        </Form.Group>
+        </InputGroup>
         <Button type="submit" variant="success">
           Cadastrar
         </Button>
