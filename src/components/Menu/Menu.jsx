@@ -30,6 +30,9 @@ export function Menu() {
             <Nav.Link as={Link} to="/livros">
               Livros
             </Nav.Link>
+            <Nav.Link as={Link} to="/autores">
+              Autores
+            </Nav.Link>
             <Nav.Link as={Link} to="/emprestimos">
               Emprestimos
             </Nav.Link>
