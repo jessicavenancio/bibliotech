@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Nav } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -33,6 +33,10 @@ export function Login() {
           duration: 2500,
         });
       });
+  }
+
+  function onVenda() {
+    navigate("/vendas");
   }
 
   function onLoginGoogle() {
@@ -102,6 +106,11 @@ export function Login() {
           Entrar
         </Button>
       </Form>
+      <Button type="submit" className="mt-3" variant="danger">
+        <Nav.Link as={Link} to="/vendas">
+        Compre já! <i className="ml-2 bi bi-tags"></i>
+        </Nav.Link>
+      </Button>
     </Container>
   );
 }
