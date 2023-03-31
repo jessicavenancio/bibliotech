@@ -1,5 +1,6 @@
 import {
   createUserWithEmailAndPassword,
+  GithubAuthProvider,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -22,6 +23,13 @@ export async function cadastrarEmailSenha(email, senha) {
 export async function loginGoogle() {
   // Configurar como o login do google vai funcionar
   const provider = new GoogleAuthProvider();
+  const resultado = await signInWithPopup(auth, provider);
+
+  return resultado.user;
+}
+
+export async function loginGitHub() {
+  const provider = new GithubAuthProvider();
   const resultado = await signInWithPopup(auth, provider);
 
   return resultado.user;

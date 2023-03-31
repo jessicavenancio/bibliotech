@@ -4,9 +4,11 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
+import githubWhiteIcon from "../../assets/icons/githubWhiteIcon.svg";
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
+import { loginGoogle, loginEmailSenha, loginGitHub } from "../../firebase/auth";
+import { Footer } from "../../components/Footer/Footer";
 
 export function Login() {
   const {
@@ -52,6 +54,23 @@ export function Login() {
       });
   }
 
+  function onLoginGitHub() {
+    loginGitHub()
+    .then((user) => {
+      toast.success(`Bem-vindo(a) ${user.email}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+      navigate("/");
+    })
+    .catch((erro) => {
+      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+    });
+  }
+
   const usuarioLogado = useContext(AuthContext);
 
   // Se tiver dados no objeto, está logado
@@ -69,10 +88,17 @@ export function Login() {
         Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
       </p>
       <hr />
+      <div>
       <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
         <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
         Google
       </Button>
+      <br />
+      <Button className="mb-3" variant="dark" onClick={onLoginGitHub}>
+        <img src={githubWhiteIcon} width="37" alt="GitHub icon" /> Entrar com o
+        GitHub
+      </Button>
+      </div>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
@@ -102,6 +128,7 @@ export function Login() {
           Entrar
         </Button>
       </Form>
+      <Footer />
     </Container>
   );
 }

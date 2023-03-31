@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getEmprestimos } from "../../firebase/emprestimos";
 import { Loader } from "../../components/Loader/Loader";
 
+
 export function Emprestimos() {
 
     const [emprestimos, setEmprestimos] = useState(null);

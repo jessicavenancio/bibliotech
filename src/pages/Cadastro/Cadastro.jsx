@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Footer } from "../../components/Footer/Footer";
 
 export function Cadastro() {
   const {
@@ -96,6 +97,7 @@ export function Cadastro() {
           Cadastrar
         </Button>
       </Form>
+      <footer><Footer /></footer>
     </Container>
   );
 }
