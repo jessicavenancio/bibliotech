@@ -1,11 +1,17 @@
 import { Button, Container, Form, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
 import { useForm } from "react-hook-form";
-import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
+import { cadastrarEmailSenha, loginGitHub, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Footer } from "../../components/Footer/Footer";
+import githubWhiteIcon from "../../assets/icons/githubWhiteIcon.svg";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+
+
 
 export function Cadastro() {
   const {
@@ -53,6 +59,34 @@ export function Cadastro() {
       });
   }
 
+
+  function onLoginGitHub() {
+    loginGitHub()
+    .then((user) => {
+      toast.success(`Bem-vindo(a) ${user.email}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+      navigate("/");
+    })
+    .catch((erro) => {
+      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+    });
+  }
+
+
+  const usuarioLogado = useContext(AuthContext);
+
+  // Se tiver dados no objeto, está logado
+  if (usuarioLogado !== null) {
+    return <Navigate to="/" />;
+  }
+
+
+
   return (
     <Container fluid className="my-5">
       <p className="text-center">
@@ -63,16 +97,17 @@ export function Cadastro() {
         Já tem conta? <Link to="/login">Entre</Link>
       </p>
       <hr />
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
+      <Button className="mb-2" variant="danger" onClick={onLoginGoogle}>
         <img src={googleIcon} width="32" alt="Logo do google" />
         Entrar com o Google
       </Button>
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
-        <img src={googleIcon} width="32" alt="Logo do google" />
-        Entrar com o Google
+      <br />
+      <Button className="mb-2" variant="dark" onClick={onLoginGitHub}>
+        <img src={githubWhiteIcon} width="36" alt="GitHub icon" /> Entrar com o
+        GitHub
       </Button>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Form.Group className="mb-3" controlId="email">
+        <Form.Group className="mb-5" controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
@@ -84,7 +119,7 @@ export function Cadastro() {
             {errors.email?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
+        <Form.Group className="mb-5" controlId="password">
           <Form.Label>Senha</Form.Label>
           <Form.Control
             type="password"
@@ -100,12 +135,13 @@ export function Cadastro() {
           Cadastrar
         </Button>
       </Form>
-
       <Button type="submit" className="mt-3" variant="danger">
         <Nav.Link as={Link} to="/vendas">
         Compre já! <i className="ml-2 bi bi-tags"></i>
         </Nav.Link>
       </Button>
+      <footer><Footer /></footer>
+
     </Container>
   );
 }

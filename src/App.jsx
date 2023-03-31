@@ -30,7 +30,6 @@ export function App() {
       // user tem objeto = logado
       setUsuarioLogado(user);
     });
-
     // Esse efeito irá rodar apenas uma vez
     // Quando o App for renderizado/inicializado
   }, []);
