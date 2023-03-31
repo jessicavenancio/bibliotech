@@ -103,18 +103,18 @@ export function Login() {
       </p>
       <hr />
       <div>
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
+      <Button className="mb-2" variant="danger" onClick={onLoginGoogle}>
         <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
         Google
       </Button>
       <br />
-      <Button className="mb-3" variant="dark" onClick={onLoginGitHub}>
+      <Button className="mb-2" variant="dark" onClick={onLoginGitHub}>
         <img src={githubWhiteIcon} width="37" alt="GitHub icon" /> Entrar com o
         GitHub
       </Button>
       </div>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Form.Group className="mb-3" controlId="email">
+        <Form.Group className="mb-5" controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
@@ -127,7 +127,7 @@ export function Login() {
           </Form.Text>
         </Form.Group>
           <Form.Label>Senha</Form.Label>
-        <InputGroup className="mb-3" controlId="senha">
+        <InputGroup className="mb-5" controlId="senha">
           <Form.Control
             onCh
             id="senha"
