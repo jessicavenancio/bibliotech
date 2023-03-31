@@ -67,6 +67,10 @@ export function Cadastro() {
         <img src={googleIcon} width="32" alt="Logo do google" />
         Entrar com o Google
       </Button>
+      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
+        <img src={googleIcon} width="32" alt="Logo do google" />
+        Entrar com o Google
+      </Button>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
