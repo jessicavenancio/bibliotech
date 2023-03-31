@@ -1,4 +1,4 @@
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Nav } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
@@ -107,6 +107,12 @@ export function Cadastro() {
           Cadastrar
         </Button>
       </Form>
+
+      <Button type="submit" className="mt-3" variant="danger">
+        <Nav.Link as={Link} to="/vendas">
+        Compre já! <i className="ml-2 bi bi-tags"></i>
+        </Nav.Link>
+      </Button>
     </Container>
   );
 }
