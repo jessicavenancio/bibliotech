@@ -4,6 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 // Chaves de acesso ao firebase
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDSnmmrLqN_pT7bYtayxLoNLu6Ru_FlVc4",
   authDomain: "bibliotech-7.firebaseapp.com",
