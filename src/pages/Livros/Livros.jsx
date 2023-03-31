@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { Info } from "../../components/Info/Info";
 import { Loader } from "../../components/Loader/Loader";
 import { deleteLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
@@ -66,12 +67,13 @@ export function Livros() {
                                             <img src={livro.urlCapa} alt={livro.titulo} />
                                         </td>
                                         <td>
+                                            <Info titulo = {livro.titulo} autor={livro.autor} categoria={livro.categoria} isbn={livro.isbn}/>
                                             <Button
                                                 as={Link}
                                                 to={`/livros/editar/${livro.id}`}
                                                 variant="warning"
                                                 size="sm"
-                                                className="me-2"
+                                                className="m-2"
                                             >
                                                 <i className="bi bi-pencil-fill"></i>
                                             </Button>
