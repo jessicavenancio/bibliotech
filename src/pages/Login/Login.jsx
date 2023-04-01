@@ -10,6 +10,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { loginGoogle, loginEmailSenha, loginGitHub } from "../../firebase/auth";
 import { Footer } from "../../components/Footer/Footer";
 import "./Login.css"
+import { firebaseError } from "../../firebase/firebaseError";
 
 export function Login() {
   const {
@@ -31,7 +32,7 @@ export function Login() {
         navigate("/");
       })
       .catch((erro) => {
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        toast.error(`Um erro aconteceu.  ${firebaseError(erro.code)}`, {
           position: "bottom-right",
           duration: 2500,
         });
@@ -61,11 +62,12 @@ export function Login() {
         navigate("/");
       })
       .catch((erro) => {
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        toast.error(`Um erro aconteceu.  ${firebaseError(erro.code)}`, {
           position: "bottom-right",
           duration: 2500,
         });
-      });
+      })
+      
   }
 
   function onLoginGitHub() {
@@ -78,7 +80,7 @@ export function Login() {
       navigate("/");
     })
     .catch((erro) => {
-      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+      toast.error(`Um erro aconteceu.  ${firebaseError(erro.code)}`, {
         position: "bottom-right",
         duration: 2500,
       });
@@ -129,7 +131,6 @@ export function Login() {
           <Form.Label>Senha</Form.Label>
         <InputGroup className="mb-5" controlId="senha">
           <Form.Control
-            onCh
             id="senha"
             type={inputType}
             placeholder="Sua senha"
