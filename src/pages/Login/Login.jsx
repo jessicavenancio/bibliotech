@@ -131,7 +131,6 @@ export function Login() {
           <Form.Label>Senha</Form.Label>
         <InputGroup className="mb-5" controlId="senha">
           <Form.Control
-            onCh
             id="senha"
             type={inputType}
             placeholder="Sua senha"
