@@ -8,6 +8,8 @@ import {
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./Footer.css"
+import { Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export function Footer() {
     return (
@@ -51,6 +53,9 @@ export function Footer() {
         <a className='text-dark' href='https://mdbootstrap.com/'>
               Squad 7
         </a>
+        <Nav.Link as={Link} to="/politicas">
+              Termo de politicas de privacidade aqui
+        </Nav.Link>
       </div>
     </MDBFooter>
     </div>
