@@ -5,9 +5,10 @@ import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
 import githubWhiteIcon from "../../assets/icons/githubWhiteIcon.svg";
+import facebookWhite from "../../assets/icons/facebookWhite.svg"
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha, loginGitHub } from "../../firebase/auth";
+import { loginGoogle, loginEmailSenha, loginGitHub, loginFacebook } from "../../firebase/auth";
 import { Footer } from "../../components/Footer/Footer";
 import "./Login.css"
 import { firebaseError } from "../../firebase/firebaseError";
@@ -70,6 +71,24 @@ export function Login() {
       
   }
 
+  function onLoginFacebook() {
+    loginFacebook()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        toast.error(`Um erro aconteceu.  ${firebaseError(erro.code)}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+      })
+      
+  }
+
   function onLoginGitHub() {
     loginGitHub()
     .then((user) => {
@@ -105,14 +124,19 @@ export function Login() {
       </p>
       <hr />
       <div>
-      <Button className="mb-2" variant="danger" onClick={onLoginGoogle}>
+      <Button className="mb-2" variant="danger" onClick={onLoginGoogle} style={{width: '260px'}}>
         <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
         Google
       </Button>
       <br />
-      <Button className="mb-2" variant="dark" onClick={onLoginGitHub}>
-        <img src={githubWhiteIcon} width="37" alt="GitHub icon" /> Entrar com o
+      <Button className="mb-2" variant="dark" onClick={onLoginGitHub} style={{width: '260px'}}>
+        <img src={githubWhiteIcon} width="32" alt="GitHub icon" /> Entrar com o
         GitHub
+      </Button>
+      <br />
+      <Button className="mb-2" onClick={onLoginFacebook} style={{width: '260px'}}>
+        <img src={facebookWhite} width="30" alt="Facebook icon" /> Entrar com o
+        Facebook
       </Button>
       </div>
       <Form onSubmit={handleSubmit(onSubmit)}>
