@@ -18,6 +18,7 @@ import { Vendas } from "./pages/Vendas/Vendas";
 import { Authors } from "./pages/Authors/Authors";
 import { AuthorAdd } from "./pages/Authors/AuthorAdd";
 import { AuthorsEdit } from "./pages/Authors/AuthorsEdit";
+import { Politicas } from "./pages/Politicas/Politicas";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -54,6 +55,7 @@ export function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/vendas" element={<Vendas />} />
+            <Route path="/politicas" element={<Politicas />} />
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
