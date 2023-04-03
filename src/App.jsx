@@ -18,6 +18,8 @@ import { Vendas } from "./pages/Vendas/Vendas";
 import { Authors } from "./pages/Authors/Authors";
 import { AuthorAdd } from "./pages/Authors/AuthorAdd";
 import { AuthorsEdit } from "./pages/Authors/AuthorsEdit";
+import { EsqueciMinhaSenha } from "./pages/EsqueciMinhaSenha/EsqueciMinhaSenha";
+
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -52,8 +54,9 @@ export function App() {
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
             </Route>
             <Route path="/login" element={<Login />} />
+            <Route path="/esqueciminhasenha" element={<EsqueciMinhaSenha />} /> 
             <Route path="/cadastro" element={<Cadastro />} />
-            <Route path="/vendas" element={<Vendas />} />
+            <Route path="/vendas" element={<Vendas />} />                       
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
