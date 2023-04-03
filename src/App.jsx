@@ -18,7 +18,11 @@ import { Vendas } from "./pages/Vendas/Vendas";
 import { Authors } from "./pages/Authors/Authors";
 import { AuthorAdd } from "./pages/Authors/AuthorAdd";
 import { AuthorsEdit } from "./pages/Authors/AuthorsEdit";
+
 import { EsqueciMinhaSenha } from "./pages/EsqueciMinhaSenha/EsqueciMinhaSenha";
+
+
+import { Politicas } from "./pages/Politicas/Politicas";
 
 
 export function App() {
@@ -57,6 +61,8 @@ export function App() {
             <Route path="/esqueciminhasenha" element={<EsqueciMinhaSenha />} /> 
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/vendas" element={<Vendas />} />                       
+            <Route path="/politicas" element={<Politicas />} />
+
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
