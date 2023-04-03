@@ -1,13 +1,11 @@
 import { Button, Container, Form } from "react-bootstrap";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import logoIcon from "../../assets/images/reset2.png";
 import { useForm } from "react-hook-form";
 import { useNavigate, Navigate } from "react-router-dom";
 import { loginEmailSenha } from "../../firebase/auth";
 import { esqueciMinhaSenha } from "../../firebase/auth";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
 import "./EsqueciMinhaSenha.css";
 
 export function EsqueciMinhaSenha() {
@@ -19,21 +17,16 @@ export function EsqueciMinhaSenha() {
 
   const navigate = useNavigate();
 
-  function onSubmit(data) {
-    const { email } = data;
-    loginEmailSenha(email).then((user) => {
-      console.log(user);
-    });
-  }
 
-  function onEsqueciMinhaSenha() {
-    esqueciMinhaSenha()
-      .then((user) => {
-        toast.success(`E-mail enviado! ${user.email}`, {
+  function  onEsqueciMinhaSenha(data) {
+    const { email } = data;
+    esqueciMinhaSenha(email)
+      .then(() => {
+        toast.success(`E-mail enviado! ${email}`, {
           position: "bottom-right",
           duration: 2500,
         });
-        navigate("/");
+        navigate("/login");
       })
       .catch((erro) => {
         toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
@@ -41,14 +34,6 @@ export function EsqueciMinhaSenha() {
           duration: 2500,
         });
       });
-  }
-
-
-  const usuarioLogado = useContext(AuthContext);
-
-  // Se tiver dados no objeto, está logado
-  if (usuarioLogado !== null) {
-    return <Navigate to="/" />;
   }
 
   return (
@@ -62,7 +47,7 @@ export function EsqueciMinhaSenha() {
       </p>
       <hr />
 
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onEsqueciMinhaSenha)}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Digite seu e-mail</Form.Label>
           <Form.Control
@@ -76,7 +61,7 @@ export function EsqueciMinhaSenha() {
         </Form.Text>
         <br></br>
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={onEsqueciMinhaSenha}>
+        <Button variant="primary" type="submit" >
         Recuperar senha
         </Button>
       </Form>
