@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  sendPasswordResetEmail  
   FacebookAuthProvider,
 } from "firebase/auth";
 import { auth } from "./config";
@@ -54,3 +55,14 @@ export async function logout() {
   // Deslogar o usuário atual do firebase
   await signOut(auth);
 }
+
+
+//para resetar senha
+export async function esqueciMinhaSenha(email) {
+
+  const resultado = await sendPasswordResetEmail(auth, email);
+
+  return resultado.user;
+}
+
+

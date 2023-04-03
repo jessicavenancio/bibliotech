@@ -166,6 +166,9 @@ export function Login() {
             {errors.senha?.message}
           </Form.Text>
         </InputGroup>
+        <p className="text-muted">
+        Esqueci minha senha <Link to="/EsqueciMinhaSenha">Acesse</Link>
+        </p>
         <Button type="submit" variant="success">
           Entrar
         </Button>
@@ -175,6 +178,7 @@ export function Login() {
         Compre já! <i className="ml-2 bi bi-tags"></i>
         </Nav.Link>
       </Button>
+      
       <footer><Footer /></footer>
     </Container>
   );
