@@ -5,7 +5,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  sendPasswordResetEmail  
+  sendPasswordResetEmail,  
   FacebookAuthProvider,
 } from "firebase/auth";
 import { auth } from "./config";
