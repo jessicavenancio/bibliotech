@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import logoIcon from "../../assets/images/reset2.png";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
+import { loginEmailSenha } from "../../firebase/auth";
 import { esqueciMinhaSenha } from "../../firebase/auth";
 import "./EsqueciMinhaSenha.css";
 
