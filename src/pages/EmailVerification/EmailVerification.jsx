@@ -43,11 +43,11 @@ function EmailVerification () {
   return (
     <div className='verificacao'>
       <Container>
-      <h2>Para concluir o cadastro clique no botão abaixo para verificar seu email</h2>
+      <h2 className='titulo-2'>Para concluir o cadastro clique no botão abaixo para verificar seu email</h2>
       <Button variant="success" size="lg" onClick={handleSendEmailVerification}>
       Enviar email de verificação
         </Button>
-        <h5>Após verificar seu email, atualize a página para acessar o site!</h5>
+        <h5 className='titulo-5'>Após verificar seu email, atualize a página para acessar o site!</h5>
       </Container>
     </div>
   );

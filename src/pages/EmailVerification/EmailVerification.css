@@ -10,18 +10,13 @@
     background-color:ghostwhite;
 }
 
-h2 {
+.titulo-2 {
     margin-top: 20px;
     padding: 50px;
     font-family: serif;
 }
 
-h4 {
-    padding: 20px;
-    font-family: serif;
-}
-
-h5 {
+.titulo-5 {
     padding: 50px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: green;
