@@ -26,18 +26,19 @@ import { Quiz } from "./pages/Quiz/Quiz";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
+  const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
-    // Monitorar/detectar o usuário conectado
-    // Fica sabendo quando loga/desloga
     onAuthStateChanged(auth, (user) => {
-      // user é nulo = deslogado
-      // user tem objeto = logado
       setUsuarioLogado(user);
+      setLoading(false);
     });
-    // Esse efeito irá rodar apenas uma vez
-    // Quando o App for renderizado/inicializado
   }, []);
+
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
 
   return (
     <>
