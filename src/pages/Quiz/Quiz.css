@@ -1,4 +1,4 @@
-.container {
+.qcontainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,14 +6,14 @@
     height: 100vh;
   }
 
-  .inforPerguntas {
+  .qinforPerguntas {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 1rem;
   }
   
-  .contagemPerguntas, .pontuacao{
+  .qcontagemPerguntas, .qpontuacao{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,27 +22,22 @@
     margin-bottom: 0.5rem;
   }
   
-  .pergunta {
+  .qpergunta {
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
     margin-bottom: 1rem;
   }
   
-  .grupoResposta {
+  .qgrupoResposta {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 0.5rem;
   }
   
-  .grupoResposta span {
+  .qgrupoResposta span {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
-  }
-  
-  .btn {
-    width: 100%;
-    max-width: 500px;
   }

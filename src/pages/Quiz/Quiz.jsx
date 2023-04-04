@@ -31,30 +31,30 @@ export function Quiz(){
     }
 
     return(
-        <div className="container">
+        <div className="qcontainer">
             <h1>Quiz de Literatura!</h1>
             {showPontuacao ? (
-                <div className="pontuacao">
+                <div className="qpontuacao">
                     <img src={imgfinal} /><br/>
                     <hr/>
                     <span>Sua pontuação é {pontos} de {questions.length} pontos.</span><br/>
                     <Button variant="success" onClick={reiniciarQuiz}>Tente novamente</Button>
                 </div>) : (
                     <>
-                    <div className="inforPerguntas">
-                        <div className="contagemPerguntas">
+                    <div className="qinforPerguntas">
+                        <div className="qcontagemPerguntas">
                             <span>Pergunta {perguntaAtual + 1}/{questions.length} - N° de acertos: {pontos} </span>
                             
                         </div>
-                        <div className="pergunta">
+                        <div className="qpergunta">
                             <img src={questions[perguntaAtual].img} /><hr/>
                             {questions[perguntaAtual].pergunta}</div>
                             
                     </div>
                     
-                    <div className="resposta">
+                    <div className="qresposta">
                         {questions[perguntaAtual].opcoesResposta.map((opcoesResposta)=>
-                        <div className="grupoResposta">
+                        <div className="qgrupoResposta">
                             <Button  variant="outline-success" size="lg" onClick={()=>proximaPergunta(opcoesResposta.correta)}>
   {opcoesResposta.alternativa}{opcoesResposta.resposta}
 </Button>
