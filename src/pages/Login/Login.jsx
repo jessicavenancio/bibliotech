@@ -25,13 +25,13 @@ export function Login() {
   function onSubmit(data) {
     const { email, senha } = data;
     loginEmailSenha(email, senha)
-      .then((user) => {
-        toast.success(`Entrando como ${user.email}`, {
-          position: "bottom-right",
-          duration: 2500,
-        });
+    .then((user) => {
+      if (user.emailVerified) {
         navigate("/");
-      })
+      } else {
+        navigate("/verificacao-email");
+      }
+    })
       .catch((erro) => {
         toast.error(`Um erro aconteceu.  ${firebaseError(erro.code)}`, {
           position: "bottom-right",

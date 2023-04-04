@@ -14,6 +14,12 @@ export function Root() {
     return  <Navigate to="/login" />;
   }
 
+  if (!usuarioLogado.emailVerified) {
+    // se o email não está verificado
+    // redireciona para a página de verificação
+    return <Navigate to="/verificacao-email" />;
+  }
+
   return (
     <>
       <header>

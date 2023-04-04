@@ -9,5 +9,3 @@ const errors = {
   
   export const firebaseError = (code) => errors[code] ?? "Um erro ocorreu";
   // Uso 
-  const mensagem = firebaseError("auth/wrong-password"); // "Senha incorreta"
-  const mensagem2 = firebaseError("codigo invalido"); // "Um erro ocorreu"
