@@ -23,6 +23,7 @@ import { EsqueciMinhaSenha } from "./pages/EsqueciMinhaSenha/EsqueciMinhaSenha";
 
 
 import { Politicas } from "./pages/Politicas/Politicas";
+import { Quiz } from "./pages/Quiz/Quiz";
 
 
 export function App() {
@@ -56,6 +57,7 @@ export function App() {
               <Route path="/emprestimos" element={<Emprestimos />} />
               <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
+              <Route path="/quiz" element={<Quiz/>}/>
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/esqueciminhasenha" element={<EsqueciMinhaSenha />} /> 
