@@ -22,6 +22,7 @@ import { EsqueciMinhaSenha } from "./pages/EsqueciMinhaSenha/EsqueciMinhaSenha";
 import { Politicas } from "./pages/Politicas/Politicas";
 import EmailVerification from "./pages/EmailVerification/EmailVerification";
 import { Quiz } from "./pages/Quiz/Quiz";
+import { Loader } from "./components/Loader/Loader";
 
 
 export function App() {
@@ -37,7 +38,7 @@ export function App() {
   }, []);
 
   if (loading) {
-    return <div>Carregando...</div>;
+    return <Loader />;
   }
 
   return (
