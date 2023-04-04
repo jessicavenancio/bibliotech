@@ -18,11 +18,9 @@ import { Vendas } from "./pages/Vendas/Vendas";
 import { Authors } from "./pages/Authors/Authors";
 import { AuthorAdd } from "./pages/Authors/AuthorAdd";
 import { AuthorsEdit } from "./pages/Authors/AuthorsEdit";
-
 import { EsqueciMinhaSenha } from "./pages/EsqueciMinhaSenha/EsqueciMinhaSenha";
-
-
 import { Politicas } from "./pages/Politicas/Politicas";
+import EmailVerification from "./pages/EmailVerification/EmailVerification";
 import { Quiz } from "./pages/Quiz/Quiz";
 
 
@@ -64,6 +62,7 @@ export function App() {
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/vendas" element={<Vendas />} />                       
             <Route path="/politicas" element={<Politicas />} />
+            <Route path="/verificacao-email" element={<EmailVerification />} />
 
           </Routes>
         </BrowserRouter>

@@ -15,6 +15,7 @@ import { firebaseError } from "../../firebase/firebaseError";
 
 
 
+
 export function Cadastro() {
   const {
     register,
@@ -44,8 +45,7 @@ export function Cadastro() {
         toast.success(`Bem-vindo(a) ${user.email}`, {
           position: "bottom-right",
           duration: 2500,
-        });
-        navigate("/");
+        });;
       })
       .catch((erro) => {
         toast.error(`Um erro aconteceu.  ${firebaseError(erro.code)}`, {

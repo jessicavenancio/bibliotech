@@ -1,0 +1,28 @@
+.verificacao {
+    position: relative;
+    margin: 5em auto;  	
+	width: 650px;
+    height: 400px;  	
+    text-align: center;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color:ghostwhite;
+}
+
+h2 {
+    margin-top: 20px;
+    padding: 50px;
+    font-family: serif;
+}
+
+h4 {
+    padding: 20px;
+    font-family: serif;
+}
+
+h5 {
+    padding: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: green;
+}
