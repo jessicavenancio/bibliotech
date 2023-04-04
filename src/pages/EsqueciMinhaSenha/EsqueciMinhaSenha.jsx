@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate, Navigate } from "react-router-dom";
 import { loginEmailSenha } from "../../firebase/auth";
 import { esqueciMinhaSenha } from "../../firebase/auth";
-import "./EsqueciMinhaSenha.css";
 
 export function EsqueciMinhaSenha() {
   const {
