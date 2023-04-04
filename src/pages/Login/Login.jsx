@@ -10,7 +10,6 @@ import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
 import { loginGoogle, loginEmailSenha, loginGitHub, loginFacebook } from "../../firebase/auth";
 import { Footer } from "../../components/Footer/Footer";
-import "./Login.css"
 import { firebaseError } from "../../firebase/firebaseError";
 
 export function Login() {
