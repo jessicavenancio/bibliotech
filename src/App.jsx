@@ -37,12 +37,15 @@ export function App() {
     });
   }, []);
 
+  
   if (loading) {
     return <Loader />;
   }
 
   return (
+    
     <>
+    
       <AuthContext.Provider value={usuarioLogado}>
         <BrowserRouter>
           <Routes>

@@ -1,6 +1,6 @@
 import "./Menu.css";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import logoIcon from "./../../assets/icons/livros.png";
+import logoIcon from "./../../assets/BookTech/07 - LogoNav.png";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
 
@@ -18,7 +18,8 @@ export function Menu() {
       <Container fluid>
         <Navbar.Brand>
           <Link to="/">
-            <img src={logoIcon} width="32" alt="Logo" />
+            
+            <img src={logoIcon} width="100" alt="Logo" />
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle />
