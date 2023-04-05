@@ -6,12 +6,11 @@
     font-family: 'Open Sans', sans-serif;
 }
 $theme-colors: (
-    "info": tomato,
-    "danger": teal,
-    "success": rgb(0, 183, 255),
-    "dark": #121212,
-    "warning" : green,
-    // "lib": rgba(0,0,0,0)
+    "info": #00B3E6,
+    "danger": tomato,
+    "success": #00B3E6,
+    "warning" : yellow,
+    "primary" : #00B3E6
 );
 
 @import "../node_modules/bootstrap/scss/bootstrap";

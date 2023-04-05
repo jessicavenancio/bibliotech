@@ -37,7 +37,7 @@ export function Emprestimos() {
             <Container>
                 <div className="d-flex justify-content-between align-items-center">
                     <h1>Emprestimos</h1>
-                    <Button as={Link} to="/emprestimos/adicionar" variant="success">Adicionar emprestimo</Button>
+                    <Button as={Link} to="/emprestimos/adicionar" variant="success" id="btn-custom">Adicionar emprestimo</Button>
                 </div>
                 <hr />
                 {

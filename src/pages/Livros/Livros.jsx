@@ -49,6 +49,7 @@ export function Livros() {
                         to="/livros/adicionar"
                         variant="success"
                         className="m-2"
+                        id="btn-custom"
                     >
                         Adicionar Livro
                     </Button>

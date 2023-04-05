@@ -45,7 +45,7 @@ export function AuthorsEdit() {
                             {errors.emailAuthor?.message}
                         </Form.Text>
                     </Form.Group>
-                    <Button type="submit" variant="success">Salvar</Button>
+                    <Button type="submit" variant="success" id="btn-custom">Salvar</Button>
                 </Form>
             </Container>
         </div>

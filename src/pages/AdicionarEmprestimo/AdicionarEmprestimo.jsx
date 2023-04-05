@@ -89,7 +89,7 @@ export function AdicionarEmprestimo() {
                         </Form.Text>
                     </Form.Group>
 
-                    <Button type="submit" variant="lib">Emprestar</Button>
+                    <Button type="submit" variant="primary" id="btn-custom">Emprestar</Button>
                 </Form>
             </Container>
         </div>
