@@ -23,10 +23,12 @@ export function AdicionarEmprestimo() {
                 navigate("/emprestimos");
             })
         })
-
     }
 
     useEffect(() => {
+        const campoDataHora = document.querySelector('#entrada-hora'); //ele deve pega o campo hora e data
+        const dataHoraAtual = new Date().toISOString().slice(0, 16); 
+        campoDataHora.setAttribute('min', dataHoraAtual);
         getLivros().then(busca => {
             setLivros(busca);
         });
@@ -73,6 +75,9 @@ export function AdicionarEmprestimo() {
                         <Form.Label>Data de entrega</Form.Label>
                         <Form.Control
                             type="datetime-local"
+                            id="entrada-hora"
+                            name="dataEntrega"
+                            required
                             className={errors.dataEntrega && "is-invalid"}
                             {...register("dataEntrega", {
                                 required: "A data de entrega é obrigatória!",
@@ -84,7 +89,7 @@ export function AdicionarEmprestimo() {
                         </Form.Text>
                     </Form.Group>
 
-                    <Button type="submit" variant="success">Emprestar</Button>
+                    <Button type="submit" variant="lib">Emprestar</Button>
                 </Form>
             </Container>
         </div>
