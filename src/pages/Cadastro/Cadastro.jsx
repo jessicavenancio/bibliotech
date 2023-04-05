@@ -12,6 +12,8 @@ import facebookWhite from "../../assets/icons/facebookWhite.svg"
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { firebaseError } from "../../firebase/firebaseError";
+import { signOut } from "@firebase/auth";
+import { auth } from "../../firebase/config";
 
 
 
@@ -42,15 +44,18 @@ export function Cadastro() {
     const { email, senha } = data;
     cadastrarEmailSenha(email, senha)
       .then((user) => {
-        toast.success(`Bem-vindo(a) ${user.email}`, {
+        toast.success(`Cadastro efetuado com sucesso`, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 4000,
         });;
+        signOut(auth).then(() => {
+          navigate("/login");
+        });
       })
       .catch((erro) => {
         toast.error(`Um erro aconteceu.  ${firebaseError(erro.code)}`, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 4000,
         });
       });
   }
