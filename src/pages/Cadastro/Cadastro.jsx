@@ -182,7 +182,7 @@ export function Cadastro() {
                     <div id="icones-login" className="text-center">
                       <hr />
                       <button id="btn-custom" type="submit" variant="primary" className="btn btn-primary btn-block mb-4 ">
-                        Entrar
+                        CADASTRE-SE
                       </button>
                       <p>Ou acesse com:</p>
 
