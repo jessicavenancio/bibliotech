@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Table } from "react-bootstrap";
+import { Button, Container, Modal, ModalHeader, Table } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Info } from "../../components/Info/Info";
@@ -8,29 +8,34 @@ import { deleteLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
 
 export function Livros() {
-
     const [livros, setLivros] = useState(null);
     const [searchTitle, setSearchTitle] = useState("");
     const [searchIsbn, setSearchIsbn] = useState("");
+    const [zoomImg, setZoomImg] = useState(false);
 
     useEffect(() => {
         initializeTable();
     }, []);
 
     function initializeTable() {
-        getLivros().then(resultados => {
+        getLivros().then((resultados) => {
             setLivros(resultados);
             console.log(resultados);
-        })
+        });
     }
 
     function onDeleteLivro(id, titulo) {
-        const deletar = window.confirm(`Tem certeza que deseja excluir o livro ${titulo}?`);
+        const deletar = window.confirm(
+            `Tem certeza que deseja excluir o livro ${titulo}?`
+        );
         if (deletar) {
             deleteLivro(id).then(() => {
-                toast.success(`${titulo} apagado com sucesso!`, { duration: 2000, position: "bottom-right" });
+                toast.success(`${titulo} apagado com sucesso!`, {
+                    duration: 2000,
+                    position: "bottom-right",
+                });
                 initializeTable();
-            })
+            });
         }
     }
 
@@ -49,9 +54,9 @@ export function Livros() {
                     </Button>
                 </div>
                 <hr />
-                {livros === null ?
+                {livros === null ? (
                     <Loader />
-                    :
+                ) : (
                     <Table striped bordered hover>
                         <thead>
                             <tr class="align-top text-center">
@@ -63,26 +68,35 @@ export function Livros() {
                                             type="text"
                                             placeholder="Digite o título..."
                                             value={searchTitle}
-                                            onChange={(event) => { setSearchTitle(event.target.value) }}
+                                            onChange={(event) => {
+                                                setSearchTitle(event.target.value);
+                                            }}
                                         />
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                            <span class="input-group-text">
+                                                <i class="bi bi-search"></i>
+                                            </span>
                                         </div>
                                     </div>
                                 </th>
                                 <th>Autor</th>
                                 <th>Categoria</th>
-                                <th>ISBN
+                                <th>
+                                    ISBN
                                     <div class="input-group mb-3">
                                         <input
                                             className="form-control"
                                             type="text"
                                             placeholder="Digite o ISBN..."
                                             value={searchIsbn}
-                                            onChange={(event) => { setSearchIsbn(event.target.value) }}
+                                            onChange={(event) => {
+                                                setSearchIsbn(event.target.value);
+                                            }}
                                         />
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                            <span class="input-group-text">
+                                                <i class="bi bi-search"></i>
+                                            </span>
                                         </div>
                                     </div>
                                 </th>
@@ -92,9 +106,13 @@ export function Livros() {
                         </thead>
                         <tbody>
                             {livros
-                                .filter((livro) => livro.titulo.toLowerCase().includes(searchTitle.toLowerCase()))
-                                .filter((livro) => livro.isbn.toLowerCase().includes(searchIsbn.toLowerCase()))
-                                .map(livro => {
+                                .filter((livro) =>
+                                    livro.titulo.toLowerCase().includes(searchTitle.toLowerCase())
+                                )
+                                .filter((livro) =>
+                                    livro.isbn.toLowerCase().includes(searchIsbn.toLowerCase())
+                                )
+                                .map((livro) => {
                                     return (
                                         <tr key={livro.id}>
                                             <td>{livro.titulo}</td>
@@ -102,10 +120,26 @@ export function Livros() {
                                             <td>{livro.categoria}</td>
                                             <td>{livro.isbn}</td>
                                             <td>
-                                                <img src={livro.urlCapa} alt={livro.titulo} />
+                                                <img
+                                                    onClick={() => setZoomImg(livro.id)}
+                                                    src={livro.urlCapa}
+                                                    alt={livro.titulo}
+                                                />
+                                                
+                                                <Modal
+                                                    show={zoomImg === livro.id}
+                                                    onHide={() => setZoomImg(false)}
+                                                >
+                                                    <img src={livro.urlCapa} />
+                                                </Modal>
                                             </td>
                                             <td>
-                                                <Info titulo={livro.titulo} autor={livro.autor} categoria={livro.categoria} isbn={livro.isbn} />
+                                                <Info
+                                                    titulo={livro.titulo}
+                                                    autor={livro.autor}
+                                                    categoria={livro.categoria}
+                                                    isbn={livro.isbn}
+                                                />
                                                 <Button
                                                     as={Link}
                                                     to={`/livros/editar/${livro.id}`}
@@ -115,17 +149,21 @@ export function Livros() {
                                                 >
                                                     <i className="bi bi-pencil-fill"></i>
                                                 </Button>
-                                                <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
+                                                <Button
+                                                    size="sm"
+                                                    variant="danger"
+                                                    onClick={() => onDeleteLivro(livro.id, livro.titulo)}
+                                                >
                                                     <i className="bi bi-trash3-fill"></i>
                                                 </Button>
                                             </td>
                                         </tr>
-                                    )
+                                    );
                                 })}
                         </tbody>
                     </Table>
-                }
+                )}
             </Container>
         </div>
-    )
+    );
 }
