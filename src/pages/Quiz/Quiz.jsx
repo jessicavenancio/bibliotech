@@ -32,7 +32,8 @@ export function Quiz() {
 
     return (
         <div className="qcontainer">
-            <h1>Quiz de Literatura!</h1>
+            <div className='qquiz'>
+            <h1><b>Quiz de Literatura!</b></h1>
             {showPontuacao ? (
                 <div className="qpontuacao">
                     <img src={imgfinal} /><br />
@@ -55,14 +56,16 @@ export function Quiz() {
                     <div className="qresposta">
                         {questions[perguntaAtual].opcoesResposta.map((opcoesResposta) =>
                             <div className="qgrupoResposta">
-                                <Button variant="outline-success" size="lg" onClick={() => proximaPergunta(opcoesResposta.correta)}>
+                                <Button box-shadom='none' variant="outline-success" size="lg" onClick={() => proximaPergunta(opcoesResposta.correta)}>
                                     {opcoesResposta.alternativa}{opcoesResposta.resposta}
                                 </Button>
                             </div>)}
                     </div>
+                    
                 </>
             )
             }
+        </div>
         </div>
     )
 }
