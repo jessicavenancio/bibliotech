@@ -1,7 +1,7 @@
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import logoIcon from "../../assets/images/reset2.png";
+import logoIcon from "../../assets/BookTech/05 - LogoNome.png";
 import { useForm } from "react-hook-form";
 import { useNavigate, Navigate } from "react-router-dom";
 import { loginEmailSenha } from "../../firebase/auth";
@@ -17,7 +17,7 @@ export function EsqueciMinhaSenha() {
   const navigate = useNavigate();
 
 
-  function  onEsqueciMinhaSenha(data) {
+  function onEsqueciMinhaSenha(data) {
     const { email } = data;
     esqueciMinhaSenha(email)
       .then(() => {
@@ -54,14 +54,18 @@ export function EsqueciMinhaSenha() {
             className={errors.email ? "is-invalid" : ""}
             placeholder="Seu email"
             {...register("email", { required: "O e-mail é obrigatório " })}
-        />
-        <Form.Text className="invalid-feedback">
-        {errors.email?.message}
-        </Form.Text>
-        <br></br>
+          />
+          <Form.Text className="invalid-feedback">
+            {errors.email?.message}
+          </Form.Text>
+          <br></br>
         </Form.Group>
-        <Button variant="primary" type="submit" >
-        Recuperar senha
+        <Button className="m-2" id="btn-custom" variant="primary" type="submit" >
+          Recuperar senha
+        </Button>
+
+        <Button id="btn-custom" variant="primary" type="submit" >
+          <Link to="/login" class="btn-link">Voltar</Link>
         </Button>
       </Form>
     </Container>

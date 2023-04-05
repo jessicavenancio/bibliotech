@@ -34,7 +34,7 @@ export function Authors() {
                 <div className="d-flex justify-content-between align-items-center">
                     <h1>Autores</h1>
                     <Button variant="success" 
-                    as={Link} to="/autor/add">
+                    as={Link} to="/autor/add" id="btn-custom">
                         Adicionar Autor
                     </Button>
                 </div>
