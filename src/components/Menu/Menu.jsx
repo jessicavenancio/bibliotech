@@ -40,6 +40,9 @@ export function Menu() {
             <Nav.Link id="btn-custom" as={Link} to="/quiz">
               Quiz
             </Nav.Link>
+            <Nav.Link id="btn-custom" as={Link} to="/batepapo">
+              Batepapo
+            </Nav.Link>
             <Nav.Link id="btn-custom" onClick={onLogout}>
               <i className="bi bi-box-arrow-right"></i>
             </Nav.Link>
