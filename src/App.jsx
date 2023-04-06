@@ -23,6 +23,8 @@ import { Politicas } from "./pages/Politicas/Politicas";
 import EmailVerification from "./pages/EmailVerification/EmailVerification";
 import { Quiz } from "./pages/Quiz/Quiz";
 import { Loader } from "./components/Loader/Loader";
+import { Batepapo2 } from "./pages/Batepapo2/Batepapo2";
+import { addUsuario } from "./firebase/usuarios";
 
 
 export function App() {
@@ -36,6 +38,17 @@ export function App() {
       setLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    if (usuarioLogado) {
+      const usuarioAtual = {
+        displayName: usuarioLogado.displayName,
+        email: usuarioLogado.email,
+        photoURL: usuarioLogado.photoURL,
+      };
+      addUsuario(usuarioAtual);
+    }
+  }, [usuarioLogado]);
 
   
   if (loading) {
@@ -61,6 +74,7 @@ export function App() {
               <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
               <Route path="/quiz" element={<Quiz/>}/>
+              <Route path="/batepapo" element={<Batepapo2/>}/>
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/esqueciminhasenha" element={<EsqueciMinhaSenha />} /> 
