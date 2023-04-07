@@ -1,6 +1,5 @@
 import { Button, Container, Form, Nav, InputGroup } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
-import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
 import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginFacebook, loginGitHub, loginGoogle } from "../../firebase/auth";
@@ -121,13 +120,11 @@ export function Cadastro() {
   }
 
   return (
-    <Container fluid className="my-5">
-
-      <div className="px-4 py-3 px-md-5 text-center text-lg-start" id="div-bg">
+    <Container fluid className="my-2">
+      <div className="px-5 py-3 px-md-5 text-center text-lg-start" id="div-bg">
         <div class="container">
           <div class="row gx-lg-5 align-items-center">
             <div class="col-lg-6 mb-3 mb-lg-0">
-
               <p className="text-center">
                 <img src={loginImg} width="256" alt="Logo" />
               </p>
@@ -146,70 +143,64 @@ export function Cadastro() {
             <div className="col-lg-6 mb-2 mb-lg-0">
               <div className="card">
                 <div className="card-body py-3 px-md-5">
-                  <form>
-                    <Form onSubmit={handleSubmit(onSubmit)}>
-                      <Form.Group className="mb-2" controlId="email">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control
-                          type="email"
-                          placeholder="Seu email"
-                          className={errors.email ? "is-invalid" : ""}
-                          {...register("email", { required: "Email é obrigatório" })}
-                        />
-                        <Form.Text className="invalid-feedback">
-                          {errors.email?.message}
-                        </Form.Text>
-                      </Form.Group>
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                  <Form.Group className="mb-2" controlId="email">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      type="email"
+                      placeholder="Seu email"
+                      className={errors.email ? "is-invalid" : ""}
+                      {...register("email", { required: "Email é obrigatório" })}
+                    />
+                    <Form.Text className="invalid-feedback">
+                      {errors.email?.message}
+                    </Form.Text>
+                  </Form.Group>
 
-                      <Form.Label>Senha</Form.Label>
-                      <InputGroup className="mb-2" controlId="senha">
-                        <Form.Control
-                          id="senha"
-                          type={inputType}
-                          placeholder="Sua senha"
-                          className={errors.senha ? "is-invalid" : ""}
-                          {...register("senha", { required: "Senha é obrigatória" })}
-                        />
-                        <InputGroup.Text onClick={showPassword}><i className={iconType}></i></InputGroup.Text>
-                        <Form.Text className="invalid-feedback">
-                          {errors.senha?.message}
-                        </Form.Text>
-                      </InputGroup>
-                    </Form>
+                  <Form.Label>Senha</Form.Label>
+                  <InputGroup className="mb-2" controlId="senha">
+                    <Form.Control
+                      id="senha"
+                      type={inputType}
+                      placeholder="Sua senha"
+                      className={errors.senha ? "is-invalid" : ""}
+                      {...register("senha", { required: "Senha é obrigatória" })}
+                    />
+                    <InputGroup.Text onClick={showPassword}><i className={iconType}></i></InputGroup.Text>
+                    <Form.Text className="invalid-feedback">
+                      {errors.senha?.message}
+                    </Form.Text>
+                  </InputGroup>
+                  <Button id="btn-custom" type="submit" variant="primary" className="btn btn-primary btn-block mb-4 ">
+                      Cadastre-se
+                    </Button>
+                </Form>
+                  <div id="icones-login" className="text-center">
+                    <p>Ou acesse com:</p>
 
+                    <div class="d-flex justify-content-center">
 
-
-                    <div id="icones-login" className="text-center">
-                      <hr />
-                      <button id="btn-custom" type="submit" variant="primary" className="btn btn-primary btn-block mb-4 ">
-                        CADASTRE-SE
+                      <button id="btn-custom" type="button" class="btn btn-sm btn-primary mx-2"
+                        onClick={onLoginGoogle}>
+                        <img src={googleIcon} alt="Google icon" />
                       </button>
-                      <p>Ou acesse com:</p>
 
-                      <div class="d-flex justify-content-center">
+                      <button id="btn-custom" type="button" class="btn btn-sm btn-primary mx-2"
+                        onClick={onLoginGitHub}>
+                        <img src={githubWhiteIcon} alt="GitHub icon" />
+                      </button>
 
-                        <button id="btn-custom" type="button" class="btn btn-sm btn-primary mx-2"
-                          onClick={onLoginGoogle}>
-                          <img src={googleIcon} alt="Google icon" />
-                        </button>
-
-                        <button id="btn-custom" type="button" class="btn btn-sm btn-primary mx-2"
-                          onClick={onLoginGitHub}>
-                          <img src={githubWhiteIcon} alt="GitHub icon" />
-                        </button>
-
-                        <button id="btn-face" type="button" class="btn btn-sm btn-primary mx-2"
-                          onClick={onLoginFacebook}>
-                          <i class="bi bi-facebook" ></i>
-                        </button>
-                      </div>
+                      <button id="btn-face" type="button" class="btn btn-sm btn-primary mx-2"
+                        onClick={onLoginFacebook}>
+                        <i class="bi bi-facebook" ></i>
+                      </button>
                     </div>
-                    <p className="text-muted mt-3">
-                      <p className="text-muted">
-                      Já tem conta? <Link to="/login">Entre</Link></p> <br /> <br />
-                      Nossos produtos? <Link to="/vendas">Assine aqui!</Link>
-                    </p>
-                  </form>
+                  </div>
+                  <p className="text-muted mt-3">
+                    <p className="text-muted">
+                      Já tem conta? <Link to="/login">Entre</Link></p>
+                    Nossos produtos? <Link to="/vendas">Assine aqui!</Link>
+                  </p>
                 </div>
               </div>
             </div>
@@ -217,7 +208,6 @@ export function Cadastro() {
         </div>
       </div>
       <footer><Footer /></footer>
-
     </Container>
   );
 }
